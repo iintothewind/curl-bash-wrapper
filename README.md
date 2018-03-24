@@ -38,7 +38,7 @@ export REQ_BASE="http://api.openweathermap.org"
 export REQ_METHOD="GET"
 ```
 
-The command can be simplified to be:
+The command can be simplified to:
 
 ```bash
 cf_req -l '/data/2.5/weather?appid=12345&lang=zh_cn&q=Shanghai'
@@ -55,7 +55,7 @@ export REQ_PWD="admin"
 export REQ_METHOD="POST"
 ```
 
-The command can be simplified to be:
+The command can be simplified to:
 
 ```bash
 cf_req -d '{ "query" : "MATCH (ee:Person) WHERE ee.name = \"Emil\" RETURN ee;", "params" : {} }'
