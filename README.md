@@ -67,7 +67,7 @@ cat query.json | cf_req
 
 ### format json response
 
-In order to format json response, We can connected `cf_req` and  `cf_jsonfmt` with a pipe:
+In order to format json response, We can connect `cf_req` and  `cf_jsonfmt` with a pipe:
 
 ```bash
 cf_req -l '/data/2.5/weather?appid=a38e&lang=zh_cn&q=Shanghai' | cf_jsonfmt
