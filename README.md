@@ -59,7 +59,19 @@ The command can be simplified to be:
 cf_req -d '{ "query" : "MATCH (ee:Person) WHERE ee.name = \"Emil\" RETURN ee;", "params" : {} }'
 ```
 
-Or we can store json request body into a `query.json` file, then:
+Or use an EOF for free text typing:
+
+```bash
+$ cf_req <<EOF
+> {
+>   "query": "match (a)--(b) return a,b",
+>   "params": {
+>   }
+> }
+> EOF
+```
+
+Or even we can store json request body into a `query.json` file, then:
 
 ```bash
 cat query.json | cf_req
