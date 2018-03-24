@@ -103,7 +103,7 @@ The response will be formatted to:
 
 ```
 
-### pick some value from the response
+### pick value from json response
 
 We can use `cf_parse` to **pipe** after any json response, and use key as the first parameter of this function:
 
