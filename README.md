@@ -1,6 +1,6 @@
 # curl-bash-wrapper
 
-`curl-bash-wrapper` is a bash script contains some useful functions that wrap curl command to create restful requests in an easy way.
+`curl-bash-wrapper` is a set of useful shell functions that wrap curl command to create restful requests in an easy way.
 
 ## prerequisites
 
