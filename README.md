@@ -105,7 +105,7 @@ The response will be formatted to:
 
 ### pick some value from the response
 
-We can use `cf_parse` to **pipe** after any json response, and give the key to the first parameter of this function:
+We can use `cf_parse` to **pipe** after any json response, and use key as the first parameter of this function:
 
 ```bash
 cf_req -l '/data/2.5/weather?appid=a38e&lang=zh_cn&q=Shanghai' | cf_jsonfmt | cf_parse '["weather"][0]["main"]'
