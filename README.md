@@ -21,7 +21,9 @@ first things first, we need to load functions by using `source curl-bash-wrapper
 
 ### send GET request
 
-`cf_req -l 'http://api.openweathermap.org/data/2.5/weather?appid=12345&lang=zh_cn&q=Shanghai' -m get`
+```bash
+cf_req -l 'http://api.openweathermap.org/data/2.5/weather?appid=12345&lang=zh_cn&q=Shanghai' -m get
+```
 
 response should be:
 
