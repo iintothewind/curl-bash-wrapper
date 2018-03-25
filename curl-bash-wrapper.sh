@@ -52,9 +52,9 @@ function cf_req() {
   done
   if type curl > /dev/null 2>&1; then
     if (test $u || test $REQ_USER) && (test $p || test $REQ_PWD); then
-      echo $(curl -k -s -u ${u:-$(echo $REQ_USER)}:${p:-$(echo $REQ_PWD)} -X `cf_upper ${m:-$(echo $REQ_METHOD)}` -H "Accept: application/json" -H "Content-Type: application/json" $(cf_composeUrl $l $REQ_BASE) -d @<(if test "GET" = `cf_upper ${m:-$(echo $REQ_METHOD)}` || test "DELETE" = `cf_upper ${m:-$(echo $REQ_METHOD)}`; then echo ""; else echo ${d:-`cat`}; fi))
+      echo $(curl -k -s -u ${u:-$REQ_USER}:${p:-$REQ_PWD} -X `cf_upper ${m:-$REQ_METHOD}` -H "Accept: application/json" -H "Content-Type: application/json" $(cf_composeUrl $l $REQ_BASE) -d @<(if test "GET" = `cf_upper ${m:-$REQ_METHOD}` || test "DELETE" = `cf_upper ${m:-$REQ_METHOD}`; then echo ""; else echo ${d:-`cat`}; fi))
     else
-      echo $(curl -k -s -X `cf_upper ${m:-$(echo $REQ_METHOD)}` -H "Accept: application/json" -H "Content-Type: application/json" $(cf_composeUrl $l $REQ_BASE) -d @<(if test "GET" = `cf_upper ${m:-$(echo $REQ_METHOD)}` || test "DELETE" = `cf_upper ${m:-$(echo $REQ_METHOD)}`; then echo ""; else echo ${d:-`cat`}; fi)) 
+      echo $(curl -k -s -X `cf_upper ${m:-$REQ_METHOD}` -H "Accept: application/json" -H "Content-Type: application/json" $(cf_composeUrl $l $REQ_BASE) -d @<(if test "GET" = `cf_upper ${m:-$REQ_METHOD}` || test "DELETE" = `cf_upper ${m:-$REQ_METHOD}`; then echo ""; else echo ${d:-`cat`}; fi)) 
     fi
   else
     echo "curl is not found in PATH"
