@@ -16,7 +16,7 @@ function cf_startsWith() {
 function cf_composeUrl() {
   local inputUrl=$1
   local baseUrl=$2
-  if test $inputUrl && (cf_startsWith $inputUrl $baseUrl || cf_startsWith $inputUrl "http://"); then
+  if test $inputUrl && (cf_startsWith $inputUrl $baseUrl || [[ $inputUrl =~ http.?://.+ ]]; then
     echo $inputUrl
   else
     echo "$baseUrl$inputUrl"
