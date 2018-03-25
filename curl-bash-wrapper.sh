@@ -16,7 +16,7 @@ function cf_startsWith() {
 function cf_composeUrl() {
   local inputUrl=$1
   local baseUrl=$2
-  if test $inputUrl && (cf_startsWith $inputUrl $baseUrl || [[ $inputUrl =~ http.?://.+ ]]; then
+  if test $inputUrl && (cf_startsWith $inputUrl $baseUrl || [[ $inputUrl =~ http.?://.+ ]]); then
     echo $inputUrl
   else
     echo "$baseUrl$inputUrl"
@@ -43,21 +43,11 @@ function cf_req() {
   local u;local p;local l;local m;local d;
   while getopts ":u:p:l:m:d:" o; do
       case "${o}" in
-          u)
-              u=${OPTARG}
-              ;;
-          p)
-              p=${OPTARG}
-              ;;
-          l)
-              l=${OPTARG}
-              ;;
-          m)
-              m=${OPTARG}
-              ;;
-          d)
-              d=${OPTARG}
-              ;;
+          u)  u=${OPTARG} ;;
+          p)  p=${OPTARG} ;;
+          l)  l=${OPTARG} ;;
+          m)  m=${OPTARG} ;;
+          d)  d=${OPTARG} ;;
       esac
   done
   if type curl > /dev/null 2>&1; then
