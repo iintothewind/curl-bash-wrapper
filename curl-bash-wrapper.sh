@@ -23,7 +23,7 @@ function cf_composeUrl() {
   fi
 }
 
-# used after a pipe, cat '{ "k": "v"}' | jsonfmt
+# used after a pipe, for example: echo '{ "k": "v"}' | cf_jsonfmt
 function cf_jsonfmt() {
   if type python > /dev/null 2>&1; then
     python -mjson.tool
@@ -62,7 +62,7 @@ function cf_req() {
   fi
 }
 
-# req -d '{ "query" : "MATCH (ee:Person) WHERE ee.name = \"Emil\" RETURN ee;", "params" : {} }'| parse '["data"][0][0]["all_relationships"]'
+# cf_req -d '{ "query" : "MATCH (ee:Person) WHERE ee.name = \"Emil\" RETURN ee;", "params" : {} }'| cf_parse '["data"][0][0]["all_relationships"]'
 # $1 the key
 # $2 json string or read stdin from cat 
 function cf_parse() {
