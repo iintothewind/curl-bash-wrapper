@@ -7,16 +7,16 @@ function cf_upper() {
   echo "${1:-`cat`}" | tr '[:lower:]' '[:upper:]'
 }
 
-function cf_startsWith() {
+function cf_starts_with() {
   local str=$1
   local pre=$2
   [[ "$str" ==  ${pre}* ]]
 }
 
-function cf_composeUrl() {
+function cf_compose_url() {
   local inputUrl=$1
   local baseUrl=$2
-  if test $inputUrl && (cf_startsWith $inputUrl $baseUrl || [[ $inputUrl =~ http.?://.+ ]]); then
+  if test $inputUrl && (cf_starts_with $inputUrl $baseUrl || [[ $inputUrl =~ http.?://.+ ]]); then
     echo $inputUrl
   else
     echo "$baseUrl$inputUrl"
@@ -52,9 +52,9 @@ function cf_req() {
   done
   if type curl > /dev/null 2>&1; then
     if (test $u || test $REQ_USER) && (test $p || test $REQ_PWD); then
-      echo $(curl -k -s -u ${u:-$REQ_USER}:${p:-$REQ_PWD} -X `cf_upper ${m:-$REQ_METHOD}` -H "Accept: application/json" -H "Content-Type: application/json" $(cf_composeUrl $l $REQ_BASE) -d @<(if test "GET" = `cf_upper ${m:-$REQ_METHOD}` || test "DELETE" = `cf_upper ${m:-$REQ_METHOD}`; then echo ""; else echo ${d:-`cat`}; fi))
+      echo $(curl -k -s -u ${u:-$REQ_USER}:${p:-$REQ_PWD} -X `cf_upper ${m:-$REQ_METHOD}` -H "Accept: application/json" -H "Content-Type: application/json" $(cf_compose_url $l $REQ_BASE) -d @<(if test "GET" = `cf_upper ${m:-$REQ_METHOD}` || test "DELETE" = `cf_upper ${m:-$REQ_METHOD}`; then echo ""; else echo ${d:-`cat`}; fi))
     else
-      echo $(curl -k -s -X `cf_upper ${m:-$REQ_METHOD}` -H "Accept: application/json" -H "Content-Type: application/json" $(cf_composeUrl $l $REQ_BASE) -d @<(if test "GET" = `cf_upper ${m:-$REQ_METHOD}` || test "DELETE" = `cf_upper ${m:-$REQ_METHOD}`; then echo ""; else echo ${d:-`cat`}; fi)) 
+      echo $(curl -k -s -X `cf_upper ${m:-$REQ_METHOD}` -H "Accept: application/json" -H "Content-Type: application/json" $(cf_compose_url $l $REQ_BASE) -d @<(if test "GET" = `cf_upper ${m:-$REQ_METHOD}` || test "DELETE" = `cf_upper ${m:-$REQ_METHOD}`; then echo ""; else echo ${d:-`cat`}; fi)) 
     fi
   else
     echo "curl is not found in PATH"
