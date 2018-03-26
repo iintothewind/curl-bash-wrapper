@@ -127,7 +127,7 @@ cf_req -l '/data/2.5/weather?appid=a38e&lang=zh_cn&q=Shanghai' | cf_jsonfmt | cf
 
 result:
 
-```shell
+```bash
 Mist
 ```
 
